@@ -1,10 +1,13 @@
 import React from "react";
 import {
+  Box,
+  Divider,
   Drawer as SideNav,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
+  Typography,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import DashboardIcon from "@material-ui/icons/Dashboard";
@@ -39,6 +42,12 @@ const Drawer = () => {
       classes={{ paper: classes.paper }}
     >
       <List>
+        <Box m={1}>
+          <Typography variant="h5" align="center" color="textPrimary">
+            Menu
+          </Typography>
+        </Box>
+        <Divider />
         {itemMenu.map((menu, index) => (
           <Link to={menu.path}>
             <ListItem button key={index}>

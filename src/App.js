@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
+import Drawer from "./components/Drawer";
+
+//pages
+import Dashboard from "./pages/Dashboard";
+import CreateFellow from "./pages/CreateFellow";
+import ListFellow from "./pages/ListFellow";
+import ErrorPage from "./pages/ErrorPage";
+
+const useStyles = makeStyles({
+  container: {
+    display: "flex",
+  },
+});
 
 function App() {
+  const classes = useStyles();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className={classes.container}>
+        <Drawer />
+        <div>
+          <Switch>
+            <Route exact path="/">
+              <Dashboard />
+            </Route>
+            <Route path="/create">
+              <CreateFellow />
+            </Route>
+            <Route path="/list">
+              <ListFellow />
+            </Route>
+            <Route path="*">
+              <ErrorPage />
+            </Route>
+          </Switch>
+        </div>
+      </div>
+    </Router>
   );
 }
 

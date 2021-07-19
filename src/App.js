@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
 import Sidenav from "./components/Sidenav";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import red from "@material-ui/core/colors/red";
@@ -26,39 +25,26 @@ const theme = createTheme({
   },
 });
 
-const useStyles = makeStyles({
-  container: {
-    display: "flex",
-  },
-  pages: {
-    width: "100%",
-  },
-});
-
 function App() {
-  const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <div className={classes.container}>
-          <Sidenav />
-          <div className={classes.pages}>
-            <Switch>
-              <Route exact path="/">
-                <Dashboard />
-              </Route>
-              <Route path="/create">
-                <CreateFellow />
-              </Route>
-              <Route path="/list">
-                <ListFellow />
-              </Route>
-              <Route path="*">
-                <ErrorPage />
-              </Route>
-            </Switch>
-          </div>
-        </div>
+        <Sidenav>
+          <Switch>
+            <Route exact path="/">
+              <Dashboard />
+            </Route>
+            <Route path="/create">
+              <CreateFellow />
+            </Route>
+            <Route path="/list">
+              <ListFellow />
+            </Route>
+            <Route path="*">
+              <ErrorPage />
+            </Route>
+          </Switch>
+        </Sidenav>
       </Router>
     </ThemeProvider>
   );

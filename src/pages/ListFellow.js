@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-// import Paper from "@material-ui/core/Paper";
 import AppCard from "../components/AppCard";
+import Masonry from "react-masonry-css";
 
 const ListFellow = () => {
   const [fellows, setFellows] = useState([]);
@@ -21,19 +20,28 @@ const ListFellow = () => {
     setFellows(updatedFellows);
   };
 
+  const breakpoints = {
+    default: 3,
+    1100: 2,
+    700: 1,
+    500: 1,
+  };
+
   return (
     <Container>
-      <Grid container spacing={3}>
+      <Masonry
+        breakpointCols={breakpoints}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+      >
         {fellows.map((fellow) => (
-          <Grid item key={fellow.id} xs={12} sm={6} md={3}>
+          <div item key={fellow.id} xs={12} sm={6} md={3}>
             <AppCard fellow={fellow} handleDelete={handleDelete} />
-          </Grid>
+          </div>
         ))}
-      </Grid>
+      </Masonry>
     </Container>
   );
 };
 
 export default ListFellow;
-
-

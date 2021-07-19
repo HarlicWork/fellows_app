@@ -3,7 +3,6 @@ import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import {
-  Box,
   Button,
   CardActionArea,
   CardActions,
@@ -14,9 +13,13 @@ import {
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
+    border: "1px solid #3f51b5",
   },
   media: {
     height: 200,
+  },
+  btn: {
+    justifyContent: "space-between",
   },
 });
 
@@ -37,16 +40,15 @@ const AppCard = ({ fellow, handleDelete }) => {
             <Typography gutterBottom variant="h5" component="h2">
               {fellow.name}
             </Typography>
-            <Typography noWrap variant="body2" color="textSecondary" component="p">
+            <Typography variant="body2" color="textSecondary" component="p">
               {fellow.desc}
             </Typography>
           </CardContent>
         </CardActionArea>
-        <CardActions>
+        <CardActions className={classes.btn}>
           <Button size="small" color="primary">
             Learn More
           </Button>
-          <Box mr={7}> </Box>
           <Button
             size="small"
             color="secondary"

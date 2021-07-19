@@ -7,6 +7,9 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Avatar from "@material-ui/core/Avatar";
 
 //icons
 import DashboardIcon from "@material-ui/icons/Dashboard";
@@ -16,23 +19,40 @@ import { useHistory, useLocation } from "react-router-dom";
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles({
-  page: {
-    background: "#f9f9f9f9",
-    width: "100%",
-  },
-  drawer: {
-    width: drawerWidth,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  root: {
-    display: "flex",
-  },
-  active: {
-    background: "#f4f4f4",
-  },
+const useStyles = makeStyles((theme) => {
+  return {
+    page: {
+      background: "#f9f9f9f9",
+      width: "100%",
+      padding: theme.spacing(3),
+    },
+    drawer: {
+      width: drawerWidth,
+    },
+    drawerPaper: {
+      width: drawerWidth,
+    },
+    root: {
+      display: "flex",
+    },
+    active: {
+      background: "#f4f4f4",
+    },
+    title: {
+      padding: theme.spacing(2),
+      fontWeight: theme.typography.fontWeightBold,
+    },
+    appbar: {
+      width: `calc(100% - ${drawerWidth}px)`,
+    },
+    toolbar: theme.mixins.toolbar,
+    asmName: {
+      flexGrow: 1,
+    },
+    avatar: {
+      marginLeft: theme.spacing(2),
+    },
+  };
 });
 
 const Sidenav = ({ children }) => {
@@ -48,6 +68,15 @@ const Sidenav = ({ children }) => {
 
   return (
     <div className={classes.root}>
+      <AppBar className={classes.appbar} elevation={0}>
+        <Toolbar>
+          <Typography className={classes.asmName}>
+            Academy of Sciences Malaysia
+          </Typography>
+          <Typography>Hello, User!</Typography>
+          <Avatar src="/picture.png" className={classes.avatar} />
+        </Toolbar>
+      </AppBar>
       <Drawer
         className={classes.drawer}
         variant="permanent"
@@ -55,7 +84,7 @@ const Sidenav = ({ children }) => {
         classes={{ paper: classes.drawerPaper }}
       >
         <div>
-          <Typography variant="h5" align="center" gutterBottom>
+          <Typography variant="h5" className={classes.title}>
             Fellows App
           </Typography>
         </div>
@@ -79,7 +108,10 @@ const Sidenav = ({ children }) => {
         </List>
       </Drawer>
 
-      <div className={classes.page}>{children}</div>
+      <div className={classes.page}>
+        <div className={classes.toolbar}></div>
+        {children}
+      </div>
     </div>
   );
 };

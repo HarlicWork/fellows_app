@@ -1,8 +1,30 @@
-const CreateFellow = () => {
+import Typography from "@material-ui/core/Typography";
+
+import Container from "@material-ui/core/Container";
+
+import AppButton from "../components/AppButton";
+
+const CreateFellow = (props) => {
   return (
-    <div>
-      <h1>Create Fellow Page</h1>
-    </div>
+    <Container>
+      <Typography
+        variant="h6"
+        color="textSecondary"
+        component="h2"
+        gutterBottom
+      >
+        Create New Fellow
+      </Typography>
+
+      <AppButton
+        onClick={() => console.log("button clicked")}
+        type={props.submit}
+        color="secondary"
+        variant="contained"
+      >
+        Submit
+      </AppButton>
+    </Container>
   );
 };
 

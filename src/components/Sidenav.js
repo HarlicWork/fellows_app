@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
 import Drawer from "@material-ui/core/Drawer";
+import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -54,10 +55,12 @@ const Sidenav = ({ children }) => {
         classes={{ paper: classes.drawerPaper }}
       >
         <div>
-          <Typography variant="h5" align="center">
+          <Typography variant="h5" align="center" gutterBottom>
             Fellows App
           </Typography>
         </div>
+
+        <Divider></Divider>
 
         <List>
           {menuItem.map((item) => (

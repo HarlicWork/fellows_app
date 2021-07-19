@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import Drawer from "./components/Drawer";
+// import Drawer from "./components/Drawer";
+import Sidenav from "./components/Sidenav";
 
 //pages
 import Dashboard from "./pages/Dashboard";
@@ -19,7 +20,7 @@ function App() {
   return (
     <Router>
       <div className={classes.container}>
-        <Drawer />
+        <Sidenav />
         <div>
           <Switch>
             <Route exact path="/">

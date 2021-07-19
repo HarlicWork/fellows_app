@@ -33,10 +33,22 @@ const CreateFellow = (props) => {
       value: "ICTS",
     },
     {
+      value: "BAES",
+    },
+    {
       value: "STDI",
     },
     {
       value: "MHS",
+    },
+    {
+      value: "MPES",
+    },
+    {
+      value: "SSH",
+    },
+    {
+      value: "CS",
     },
     {
       value: "ES",

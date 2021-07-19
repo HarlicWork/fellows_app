@@ -37,7 +37,7 @@ const AppCard = ({ fellow, handleDelete }) => {
             <Typography gutterBottom variant="h5" component="h2">
               {fellow.name}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
+            <Typography noWrap variant="body2" color="textSecondary" component="p">
               {fellow.desc}
             </Typography>
           </CardContent>

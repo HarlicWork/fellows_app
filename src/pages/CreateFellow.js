@@ -67,9 +67,11 @@ const CreateFellow = (props) => {
     }
 
     if (name && age && desc) {
-      const newFellowData = { name, age, selectDisc, desc };
-      console.log(newFellowData);
-      history.push("/list");
+      fetch("http://localhost:8000/fellows", {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({ name, age, selectDisc, desc }),
+      }).then(() => history.push("/list"));
     }
   };
 

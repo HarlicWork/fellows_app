@@ -3,21 +3,12 @@ import { useHistory } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import AppButton from "../components/AppButton";
-import TextField from "@material-ui/core/TextField";
-import { makeStyles } from "@material-ui/core";
 
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
-
-const useStyles = makeStyles({
-  field: {
-    marginTop: 20,
-    marginBottom: 20,
-    display: "flex",
-  },
-});
+import AppInput from "../components/AppInput";
+import AppSelect from "../components/AppSelect";
 
 const CreateFellow = (props) => {
-  const classes = useStyles();
   const history = useHistory();
 
   const [name, setName] = useState("");
@@ -99,64 +90,50 @@ const CreateFellow = (props) => {
       </Typography>
 
       <form noValidate autoComplete="off" onSubmit={submitHandler}>
-        <TextField
-          className={classes.field}
+        <AppInput
           label="Name"
           variant="outlined"
-          color="primary"
-          fullWidth
-          required
+          required="true"
           value={name}
           onChange={(e) => setName(e.target.value)}
           error={nameIsValid}
         />
 
-        <TextField
-          className={classes.field}
+        <AppInput
           label="Age"
-          type="number"
           variant="outlined"
-          color="primary"
-          min={0}
-          required
           value={age}
           onChange={(e) => setAge(e.target.value)}
           error={ageIsValid}
+          required="true"
+          defaultValue="1"
+          inputProps={{
+            type: "number",
+            min: "1",
+            max: "120",
+            step: "1",
+          }}
         />
 
-        <TextField
-          className={classes.field}
-          label="Discipline Category"
-          variant="outlined"
-          color="primary"
-          required
-          select
-          SelectProps={{
-            native: true,
-          }}
-          helperText="Please select your discipline"
-          onChange={(e) => setSelectDisc(e.target.value)}
-        >
+        <AppSelect onChange={(e) => setSelectDisc(e.target.value)}>
           {discType.map((option) => (
             <option key={option.value} value={option.value}>
               {option.value}
             </option>
           ))}
-        </TextField>
+        </AppSelect>
 
-        <TextField
-          className={classes.field}
+        <AppInput
           label="Fellow Description"
           variant="outlined"
-          color="primary"
-          multiline
-          rows={10}
-          fullWidth
-          helperText="Please enter fellow short description"
-          required
+          required="true"
+          multiline="true"
+          rows="10"
+          fullWidth="true"
           value={desc}
           onChange={(e) => setDesc(e.target.value)}
           error={descIsValid}
+          helperText="Please enter fellow short description"
         />
 
         <AppButton

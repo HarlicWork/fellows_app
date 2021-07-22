@@ -1,4 +1,4 @@
-# Fellow App by haliq
+# Fellow App by Haliq (Frontend UI using ReactJS)
 
 This is prototype app for company fellow listing application
 
